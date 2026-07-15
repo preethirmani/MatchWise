@@ -1,4 +1,10 @@
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
+from sqlalchemy import text
+
+try:
+    from .database import get_db
+except ImportError:
+    from database import get_db
 
 app = FastAPI(
     title = 'Matchwise API',
@@ -18,3 +24,11 @@ def health_check():
         'status':'healthy'
     }
     
+@app.get('/health/database')
+def database_health_check(db = Depends(get_db)):
+    result = db.execute(text("SELECT 1"))
+    return {
+        "status": "healthy",
+        "database": "connected",
+        "result": result.scalar()
+    }
