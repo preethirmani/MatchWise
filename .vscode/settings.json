@@ -1,0 +1,6 @@
+{
+  "python.defaultInterpreterPath": "/Users/karthick/Downloads/Github/Project/MatchWise/.venv/bin/python",
+  "python.analysis.extraPaths": [
+    "/Users/karthick/Downloads/Github/Project/MatchWise/backend"
+  ]
+}
